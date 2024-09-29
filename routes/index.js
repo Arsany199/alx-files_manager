@@ -8,9 +8,6 @@ function controllerRouting(app) {
   const router = express.Router();
   app.use('/', router);
 
-  // App Controller
-
-  // should return if Redis is alive and if the DB is alive
   router.get('/status', (req, res) => {
     AppController.getStatus(req, res);
   });
@@ -62,17 +59,14 @@ function controllerRouting(app) {
     FilesController.getIndex(req, res);
   });
 
-  // should set isPublic to true on the file document based on the ID
   router.put('/files/:id/publish', (req, res) => {
     FilesController.putPublish(req, res);
   });
 
-  // should set isPublic to false on the file document based on the ID
   router.put('/files/:id/unpublish', (req, res) => {
     FilesController.putUnpublish(req, res);
   });
 
-  // should return the content of the file document based on the ID
   router.get('/files/:id/data', (req, res) => {
     FilesController.getFile(req, res);
   });
